@@ -1,0 +1,38 @@
+# Radiant Beauty Cosmetics Ventures
+> Cosmetics
+
+Radiant Beauty Cosmetics Ventures is a premier perfume store and cosmetics shop in Karu, FCT. Specializing in designer fragrances, artisanal soaps, and bridal skincare at Shop 9, Novo Plaza. We provide high-quality beauty solutions for all skin types. Trusted Karu beauty experts committed to consistent quality and identity integrity.
+
+## Business Identity Summary
+- **Category:** Cosmetics (Secondary Category: Perfumes & Fragrances)
+- **Website/Canonical:** https://github.com/Lanrcpu/radiantbeautycosmetics.git
+- **Physical Address:** Shop No. 9, Novo Shopping Plaza, Karu, Abuja, Nigeria, Karu, FCT 900110, Nigeria
+- **Primary Phone:** +234 901 556 3420 (Secondary Phone: +234 803 676 0474)
+- **Primary Email:** radiantbeautycosmesticventures@gmail.com
+- **Service Area:** Karu, Jikwoyi, Nyanya, Orozo, Asokoro
+- **Google Business Profile:** https://share.google/GvipTo4k1CjjrKPT8
+- **Google Maps Navigation:** https://maps.app.goo.gl/RdxaqK6gSd6LVKjr5
+
+## Weekly Opening Hours
+- **Monday:** 09:00 - 17:00
+- **Tuesday:** 09:00 - 17:00
+- **Wednesday:** 09:00 - 17:00
+- **Thursday:** 09:00 - 17:00
+- **Friday:** 09:00 - 17:00
+- **Saturday:** Closed
+- **Sunday:** Closed
+
+## Frequently Asked Questions (FAQ)
+### Q: Where are you located?
+A: Shop No. 9, Novo Shopping Plaza, Karu, Abuja, Nigeria.
+
+### Q: Is delivery available?  
+A: Yes, serving customers in Karu, Jikwoyi, Nyanya, Orozo, Asokoro.. Buyer covers rider fees.
+
+### Q: Are products authentic? 
+A: Absolutely. All items are sourced from authorized distributors.
+
+## Verified Technical Signatures
+- **JSON-LD Schema Graph:** https://github.com/Lanrcpu/radiantbeautycosmetics.git/schema/graph.jsonld
+- **Structured Semantic Database Object:** https://github.com/Lanrcpu/radiantbeautycosmetics.git/entity.json
+- **System Web Manifest:** https://github.com/Lanrcpu/radiantbeautycosmetics.git/manifest.webmanifest

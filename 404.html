@@ -1,0 +1,177 @@
+/**
+ * BACS Entity Hub v1.0 Client-Side Scripting
+ * Fully accessible, performance-focused vanilla JS. Zero dependencies.
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initMobileMenu();
+  initFaqAccordion();
+  initLightbox();
+  initClipboardCopier();
+  setupSmoothScrolling();
+});
+
+/**
+ * Navigation burger controller for smaller screens
+ */
+function initMobileMenu() {
+  const burger = document.querySelector('.hamburger');
+  const nav = document.querySelector('nav');
+  
+  if (!burger || !nav) return;
+  
+  burger.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    const expanded = burger.getAttribute('aria-expanded') === 'true' || false;
+    burger.setAttribute('aria-expanded', !expanded);
+  });
+  
+  // Close menu when navigation link is clicked
+  const navLinks = nav.querySelectorAll('a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('active');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+/**
+ * High-performance, keyboard-accessible accordion engine for FAQ tab
+ */
+function initFaqAccordion() {
+  const accordionItems = document.querySelectorAll('.faq-item-card');
+  
+  accordionItems.forEach(item => {
+    const trigger = item.querySelector('.faq-trigger');
+    const panel = item.querySelector('.faq-panel');
+    
+    if (!trigger || !panel) return;
+    
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      
+      // Close all other items
+      accordionItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('open');
+          const otherPanel = otherItem.querySelector('.faq-panel');
+          if (otherPanel) otherPanel.style.maxHeight = null;
+          const otherTrigger = otherItem.querySelector('.faq-trigger');
+          if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+      
+      // Toggle current item
+      if (isOpen) {
+        item.classList.remove('open');
+        panel.style.maxHeight = null;
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('open');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+}
+
+/**
+ * Lightbox Gallery Handler
+ */
+function initLightbox() {
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+  
+  if (!galleryItems.length || !lightbox || !lightboxImg || !lightboxClose) return;
+  
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      if (img) {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || 'Business Gallery Image';
+        lightbox.classList.add('active');
+        lightboxClose.focus();
+      }
+    });
+    
+    // Add keyboard trigger (Enter/Space)
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        item.click();
+      }
+    });
+  });
+  
+  const closeLightbox = () => {
+    lightbox.classList.remove('active');
+  };
+  
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+  
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      closeLightbox();
+    }
+  });
+}
+
+/**
+ * Convenient factual helper for copying details to user's device clipboard
+ */
+function initClipboardCopier() {
+  const copyButtons = document.querySelectorAll('.btn-copy-fact');
+  
+  copyButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const textToCopy = btn.getAttribute('data-copy');
+      if (!textToCopy) return;
+      
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '✓ Copied';
+        btn.style.backgroundColor = '#10b981';
+        btn.style.color = '#ffffff';
+        
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style.backgroundColor = '';
+          btn.style.color = '';
+        }, 1500);
+      });
+    });
+  });
+}
+
+/**
+ * Clean scroll transitions
+ */
+function setupSmoothScrolling() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        const headerHeight = 70;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+}
