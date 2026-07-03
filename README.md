@@ -48,7 +48,7 @@ Since this package is entirely **static**, you can host it 100% free on any stat
 ---
 
 Generated using
-**BACS Entity Hub v1.0**
+***[BACS Entity Hub v1.0]([https://vercel.com](https://entityhub-three.vercel.app).
 Standards-Based Machine Readable Entity Package Generator
 
 Generated on:
